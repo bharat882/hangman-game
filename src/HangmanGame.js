@@ -30,10 +30,6 @@ const HangmanGame = () => {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [mistakes, setMistakes] = useState(0);
 
-  useEffect(() => {
-    resetGame();
-  }, []);
-
   const resetGame = () => {
     setWord(chooseRandomWord);
     setGuessedLetters([]);
@@ -44,7 +40,10 @@ const HangmanGame = () => {
     const randomIndex = Math.floor(Math.random() * words.length);
     return words[randomIndex].toUpperCase();
   };
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    resetGame();
+  }, []);
   const handleGuess = (letter) => {
     if (!guessedLetters.includes(letter)) {
       setGuessedLetters([...guessedLetters, letter]);
