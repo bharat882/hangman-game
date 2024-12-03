@@ -53,7 +53,7 @@ const HangmanGame = () => {
   };
 
   const isGameLost = () => {
-    return mistakes >= 6;
+    return mistakes >= 10;
   };
 
   const resetGame = () => {
