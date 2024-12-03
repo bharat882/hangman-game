@@ -32,7 +32,13 @@ const HangmanGame = () => {
 
   useEffect(() => {
     resetGame();
-  }, [resetGame]); // Added resetGame to the dependency array
+  }, []);
+
+  const resetGame = () => {
+    setWord(chooseRandomWord);
+    setGuessedLetters([]);
+    setMistakes(0);
+  };
 
   const chooseRandomWord = () => {
     const randomIndex = Math.floor(Math.random() * words.length);
@@ -54,12 +60,6 @@ const HangmanGame = () => {
 
   const isGameLost = () => {
     return mistakes >= 10;
-  };
-
-  const resetGame = () => {
-    setWord(chooseRandomWord);
-    setGuessedLetters([]);
-    setMistakes(0);
   };
 
   return (
